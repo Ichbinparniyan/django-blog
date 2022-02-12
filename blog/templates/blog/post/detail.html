@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ post.title }} {% endblock %}
+
+
+{% block content %}
+    <h2>{{ post.title | title }}</h2><br>
+    <p>{{ post.caption | safe }}</p>
+    <br><br>
+    <p>created at : {{ post.created_at }}</p>
+    <a href="{% url 'blog:post-update' post.pk %}">edit</a>
+    <br><br>
+    <a href="{% url 'blog:post-delete' post.pk %}">delete</a>
+
+{% endblock %}

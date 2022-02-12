@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ post.title }} edit {% endblock %}
+
+{% block content %}
+    <h3> edit post </h3>
+    <p> Title : {{ post.title }}</p>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <label class="text-warning">{{ field.label }}</label>
+            <br>
+            <p>{{ field }}</p>
+            {% for error in field.errors %}
+                <p class="text-danger">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+        <br>
+        {% if form.errors %}
+            {% block form_error %} {% endblock %}
+        {% endif %}
+        <button type="submit" class="btn btn-warning">submit</button>
+
+    </form>
+
+{% endblock %}
